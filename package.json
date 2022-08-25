@@ -1,0 +1,93 @@
+{
+  "name": "sptruz",
+  "description": "Sptruz is an npm package for allows you to combine two colors in a variety of combinations and obtain CSS color tints and shades. In addition to processing a CSS color string and converting colors from HEX to RGB, HSL to RGB, and RGB to HEX, computations also take into account opacity.",
+  "keywords": [
+    "color",
+    "color-name",
+    "convert",
+    "parse",
+    "mix",
+    "tints",
+    "shades",
+    "tint",
+    "shade",
+    "hex",
+    "hexa",
+    "hsl",
+    "hsla",
+    "rgb",
+    "rgba",
+    "alpha"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Mohammad Abu Mattar",
+    "email": "mohammad.khaled@outlook.com",
+    "url": "https://mkabumattar.github.io/"
+  },
+  "homepage": "https://github.com/MKAbuMattar/sptruz#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MKAbuMattar/sptruz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MKAbuMattar/sptruz/issues"
+  },
+  "scripts": {
+    "lint:fix": "eslint --ignore-path .eslintignore \"src/**/*.ts\" --fix",
+    "lint:check": "eslint --ignore-path .eslintignore \"src/**/*.ts\"",
+    "prettier:fix": "prettier -w ./src --ignore-unknown --no-error-on-unmatched-pattern",
+    "prettier:check": "prettier --check ./src --no-error-on-unmatched-pattern",
+    "check": "yarn lint:check && yarn prettier:check",
+    "fix": "yarn lint:fix && yarn prettier:fix",
+    "test:coverage": "jest --coverage",
+    "test": "jest",
+    "clean:color-names": "rm -rf color-names",
+    "clean:lib": "rm -rf lib",
+    "script:config:clone": "yarn clean:color-names && node -r esbuild-runner/register script/config/gitclone.config.ts",
+    "script:csv-to-json": "node -r esbuild-runner/register script/utils/csvToJson.util.ts",
+    "script:get-base": "node -r esbuild-runner/register script/index.ts",
+    "play:ts": "nodemon -e ts -w . -x esr src/playground/playground.ts",
+    "build:lib": "tsc --p tsconfig.cjs.json && rollup --config rollup.config.js",
+    "build": "yarn clean:lib && yarn build:lib"
+  },
+  "dependencies": {
+    "zod": "3.18.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "8.3.4",
+    "@types/node": "18.7.1",
+    "@typescript-eslint/eslint-plugin": "5.33.0",
+    "@typescript-eslint/parser": "5.33.0",
+    "esbuild": "0.15.1",
+    "esbuild-runner": "2.2.1",
+    "eslint": "8.21.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "jest": "28.1.3",
+    "prettier": "2.7.1",
+    "rollup": "2.77.3",
+    "ts-jest": "28.0.7",
+    "typescript": "4.7.4"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs",
+      "types": "./index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "/lib",
+    "/index.d.ts"
+  ],
+  "support": {
+    "backing": {
+      "npm-funding": true
+    }
+  }
+}

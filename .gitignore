@@ -1,0 +1,7 @@
+color-names
+/coverage
+lib
+src/playground
+tmp
+node_modules
+yarn-error.log
