@@ -1,6 +1,6 @@
 {
   "name": "sptruz",
-  "version": "0.0.0-beta.0.0.0",
+  "version": "0.0.0-beta.0.0.1",
   "description": "Sptruz is an npm package for allows you to combine two colors in a variety of combinations and obtain CSS color tints and shades. In addition to processing a CSS color string and converting colors, computations also take into account opacity.",
   "keywords": [
     "color",
