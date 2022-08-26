@@ -1,17 +1,11 @@
 import { expect, test } from '@jest/globals';
 
-import {
-  ColorNameHEX,
-  ColorNameHSL,
-  ColorNameRGB,
-  Convert,
-  Mix,
-} from '../index';
+import { ColorsNames, Convert, Mix } from '../index';
 
 test('mix color hsl with rgb', async () => {
   const color = Mix(
-    Convert.hsl.string(ColorNameHSL.Red),
-    Convert.rgb.string(ColorNameRGB.Blue),
+    Convert.hsl.string(ColorsNames.Red.hsl),
+    Convert.rgb.string(ColorsNames.Blue.rgb),
   );
 
   expect(color).toEqual({
@@ -26,8 +20,8 @@ test('mix color hsl with rgb', async () => {
 
 test('mix color hsl with hex', async () => {
   const color = Mix(
-    Convert.hsl.string(ColorNameHSL['Baby Blue']),
-    ColorNameHEX['Radiant Sunrise'],
+    Convert.hsl.string(ColorsNames['Baby Blue'].hsl),
+    ColorsNames['Radiant Sunrise'].hex,
     30,
   );
 

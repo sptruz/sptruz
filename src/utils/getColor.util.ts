@@ -1,24 +1,31 @@
 import convert from '../libs/convert';
 import clamp from './clamp.util';
 
-const parseRGB = (num: any) => {
+const parseRGB = (num: number | string) => {
   let n = num;
   if (typeof n !== 'number')
     n = n.endsWith('%') ? (parseFloat(n) * 255) / 100 : parseFloat(n);
   return clamp(Math.round(n), 0, 255);
 };
 
-const parsePercentage = (percentage: any) =>
+const parsePercentage = (percentage: string) =>
   clamp(parseFloat(percentage), 0, 100);
 
-const parseAlpha = (alpha: any) => {
+const parseAlpha = (alpha: number | string) => {
   let a = alpha;
   if (typeof a !== 'number')
     a = a.endsWith('%') ? parseFloat(a) / 100 : parseFloat(a);
   return clamp(a, 0, 1);
 };
 
-const getRGB = ([, r, g, b, a = 1]: any) => {
+type RGBa = [
+  r: string | number,
+  g: string | number,
+  b: string | number,
+  a?: number,
+];
+
+const getRGB = ([r, g, b, a = 1]: RGBa) => {
   return {
     type: 'rgb',
     values: [r, g, b].map(parseRGB),
@@ -26,19 +33,21 @@ const getRGB = ([, r, g, b, a = 1]: any) => {
   };
 };
 
-const getHEX = (hex: any) => {
+const getHEX = (hex: string) => {
   const [r, g, b, a] = convert.hex.rgb(hex);
-  return getRGB([null, ...[r, g, b, a]]);
+  return getRGB([r, g, b, a]);
 };
 
-const getHSL = ([, h, s, l, a = 1]: any) => {
-  let hh = h;
-  if (hh.endsWith('turn')) {
-    hh = (parseFloat(hh) * 360) / 1;
-  } else if (hh.endsWith('rad')) {
-    hh = Math.round((parseFloat(hh) * 180) / Math.PI);
+type HSLa = [h: string, s: string, l: string, a?: number];
+
+const getHSL = ([h, s, l, a = 1]: HSLa) => {
+  let hh = 0;
+  if (h.endsWith('turn')) {
+    hh = (parseFloat(h) * 360) / 1;
+  } else if (h.endsWith('rad')) {
+    hh = Math.round((parseFloat(h) * 180) / Math.PI);
   } else {
-    hh = parseFloat(hh);
+    hh = parseFloat(h);
   }
   return {
     type: 'hsl',
