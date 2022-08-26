@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals';
 
-import { ColorNameHex, ColorNameRGB } from '../index';
+import { ColorNameHEX, ColorNameRGB } from '../index';
 
 test('color name rgb', async () => {
   const red = ColorNameRGB.Red;
@@ -9,7 +9,7 @@ test('color name rgb', async () => {
 });
 
 test('color name hex', async () => {
-  const red = ColorNameHex.Red;
+  const red = ColorNameHEX.Red;
 
   expect(red).toEqual('#ff0000');
 });
