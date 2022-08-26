@@ -1,15 +1,9 @@
 import { expect, test } from '@jest/globals';
 
-import {
-  ColorNameHEX,
-  ColorNameHSL,
-  ColorNameRGB,
-  Convert,
-  Sptruz,
-} from '../index';
+import { ColorsNames, Convert, Sptruz } from '../index';
 
 test('sptruz by hax color', async () => {
-  const color = new Sptruz(ColorNameHEX['100 Mph']);
+  const color = new Sptruz(ColorsNames['100 Mph'].hex);
 
   expect(color).toEqual({
     rgb: [201, 63, 56],
@@ -21,7 +15,7 @@ test('sptruz by hax color', async () => {
 
 test('sptruz by rgb color', async () => {
   const color = new Sptruz(
-    Convert.rgb.string(ColorNameRGB['20000 Leagues Under the Sea']),
+    Convert.rgb.string(ColorsNames['20000 Leagues Under the Sea'].rgb),
   );
 
   expect(color).toEqual({
@@ -33,7 +27,7 @@ test('sptruz by rgb color', async () => {
 });
 
 test('sptruz by hsl color', async () => {
-  const color = new Sptruz(Convert.hsl.string(ColorNameHSL['Puffy Pillow']));
+  const color = new Sptruz(Convert.hsl.string(ColorsNames['Puffy Pillow'].hsl));
 
   expect(color).toEqual({
     rgb: [232, 229, 222],
@@ -44,7 +38,7 @@ test('sptruz by hsl color', async () => {
 });
 
 test('sptruz tint', async () => {
-  const color = new Sptruz(ColorNameHEX['Ahoy! Blue']);
+  const color = new Sptruz(ColorsNames['Ahoy! Blue'].hex);
 
   expect(color.tint()).toEqual({
     rgb: [128, 193, 208],
@@ -55,7 +49,7 @@ test('sptruz tint', async () => {
 });
 
 test('sptruz tints', async () => {
-  const color = new Sptruz(ColorNameHEX.Zen);
+  const color = new Sptruz(ColorsNames.Zen.hex);
 
   expect(color.tints()).toEqual([
     { rgb: [231, 236, 239], alpha: 1, type: 'tint', weight: 50 },
@@ -69,7 +63,7 @@ test('sptruz tints', async () => {
 });
 
 test('sptruz shade', async () => {
-  const color = new Sptruz(ColorNameHEX['3AM in Shibuya']);
+  const color = new Sptruz(ColorsNames['3AM in Shibuya'].hex);
 
   expect(color.shade()).toEqual({
     rgb: [17, 43, 60],
@@ -80,7 +74,7 @@ test('sptruz shade', async () => {
 });
 
 test('sptruz shades', async () => {
-  const color = new Sptruz(ColorNameHEX['Café Au Lait']);
+  const color = new Sptruz(ColorsNames['Café Au Lait'].hex);
 
   expect(color.shades()).toEqual([
     { rgb: [83, 62, 46], alpha: 1, type: 'shade', weight: 50 },
@@ -89,7 +83,7 @@ test('sptruz shades', async () => {
 });
 
 test('sptruz all', async () => {
-  const color = new Sptruz(ColorNameHEX.Windjammer);
+  const color = new Sptruz(ColorsNames.Windjammer.hex);
 
   expect(color.all()).toEqual([
     {
@@ -122,27 +116,27 @@ test('sptruz all', async () => {
 });
 
 test('sptruz get HEX', async () => {
-  const color = new Sptruz(ColorNameHEX.Viridian);
+  const color = new Sptruz(ColorsNames.Viridian.hex);
 
   expect(color.getHEX).toEqual('#1e9167');
 });
 
 test('sptruz get RGB', async () => {
-  const color = new Sptruz(ColorNameHEX.Tofu);
+  const color = new Sptruz(ColorsNames.Tofu.hex);
 
   expect(color.getRGB).toEqual('rgb(232,227,217)');
 });
 
 test('sptruz get HSL', async () => {
-  const color = new Sptruz(ColorNameHEX['Silken Gold']);
+  const color = new Sptruz(ColorsNames['Silken Gold'].hex);
 
   expect(color.getHSL).toEqual('hsl(399,454%,179%)');
 });
 
 test('sptruz set color', async () => {
-  const color = new Sptruz(ColorNameHEX.Tofu);
+  const color = new Sptruz(ColorsNames.Tofu.hex);
 
   expect(
-    color.setColor(Convert.rgb.string(ColorNameRGB['Perfume Haze'])),
+    color.setColor(Convert.rgb.string(ColorsNames['Perfume Haze'].rgb)),
   ).toEqual({ rgb: [243, 233, 247], alpha: 1, type: 'base', weight: 0 });
 });
