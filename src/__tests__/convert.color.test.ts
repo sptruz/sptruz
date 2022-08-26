@@ -1,6 +1,6 @@
 import { expect, test } from '@jest/globals';
 
-import Convert from '../libs/convert';
+import { Convert } from '../index';
 
 test('Convert HSL to RGB', async () => {
   const color = Convert.hsl.rgb([0, 100, 50]);
