@@ -1,7 +1,7 @@
 {
   "name": "sptruz",
   "version": "0.0.0-beta.0.0.0",
-  "description": "Sptruz is an npm package for allows you to combine two colors in a variety of combinations and obtain CSS color tints and shades. In addition to processing a CSS color string and converting colors from HEX to RGB, HSL to RGB, and RGB to HEX, computations also take into account opacity.",
+  "description": "Sptruz is an npm package for allows you to combine two colors in a variety of combinations and obtain CSS color tints and shades. In addition to processing a CSS color string and converting colors, computations also take into account opacity.",
   "keywords": [
     "color",
     "color-name",
@@ -26,7 +26,7 @@
     "email": "mohammad.khaled@outlook.com",
     "url": "https://mkabumattar.github.io/"
   },
-  "homepage": "https://github.com/MKAbuMattar/sptruz#readme",
+  "homepage": "https://sptruz.vercel.app/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MKAbuMattar/sptruz.git"
