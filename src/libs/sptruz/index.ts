@@ -2,11 +2,22 @@ import convert from '../convert';
 import mix from '../mix';
 import parse from '../parse';
 
+import { z } from 'zod';
+
+const RGBSchema = z.array(z.number()).min(3).max(3);
+type RGB = z.infer<typeof RGBSchema>;
+
+const AlphaSchema = z.number();
+type Alpha = z.infer<typeof AlphaSchema>;
+
+const WeightSchema = z.number();
+type Weight = z.infer<typeof WeightSchema>;
+
 class Sptruz {
-  private rgb: number[];
-  private alpha: number;
+  private rgb: RGB;
+  private alpha: Alpha;
   private type: 'base' | 'tint' | 'shade';
-  private weight: number;
+  private weight: Weight;
 
   constructor(
     _color = '#000',

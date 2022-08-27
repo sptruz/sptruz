@@ -1,5 +1,3 @@
-const COMPONENT = /-?\d+(\.\d+)?%?/g;
-
 const FLOAT = '-?\\d*(?:\\.\\d+)';
 
 const NUMBER = `(${FLOAT}?)`;
@@ -78,8 +76,9 @@ const RGB4_PERCENTAGE_REGEX = new RegExp(PATTERN_RGB4_PERCENTAGE);
 const TRANSPARENT_PERCENTAGE = /^transparent$/;
 const TRANSPARENT_REGEX = new RegExp(TRANSPARENT_PERCENTAGE, 'i');
 
+const _HEX_REGEX = /#?(([0-9a-fA-F]{2}){3,4}|([0-9a-fA-F]){3,4})/;
+
 export {
-  COMPONENT,
   HEX_REGEX,
   HSL3_REGEX,
   HSL4_REGEX,
@@ -89,3 +88,5 @@ export {
   RGB4_PERCENTAGE_REGEX,
   TRANSPARENT_REGEX,
 };
+
+export { _HEX_REGEX };

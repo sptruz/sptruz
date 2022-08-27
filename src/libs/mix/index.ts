@@ -1,7 +1,15 @@
 import convert from '../convert';
 import parse from '../parse';
 
-const parseColor = (color: string) => {
+import { ParseColor } from '../../types';
+import {
+  FirstColorSchema,
+  FirstColor,
+  SecondColorSchema,
+  SecondColor,
+} from '../../types';
+
+const parseColor = (color: ParseColor) => {
   const result = parse(color);
 
   if (result === null) return null;
@@ -11,7 +19,15 @@ const parseColor = (color: string) => {
   return result;
 };
 
-const mix = (color1: string, color2: string, percentage = 50) => {
+const mix = (color1: FirstColor, color2: SecondColor, percentage = 50) => {
+  if (
+    !FirstColorSchema.safeParse(color1).success ||
+    !SecondColorSchema.safeParse(color2).success
+  ) {
+    throw new TypeError(
+      `Input should be a valid color: ${color1} or ${color2}`,
+    );
+  }
   const firstColor = parseColor(color1);
   const secondColor = parseColor(color2);
 

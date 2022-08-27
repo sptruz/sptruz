@@ -1,29 +1,32 @@
 import convert from '../libs/convert';
 import clamp from './clamp.util';
+import { z } from 'zod';
 
-const parseRGB = (num: number | string) => {
+const StringOrNumberSchema = z.string().or(z.number());
+type StringOrNumber = z.infer<typeof StringOrNumberSchema>;
+
+const SpercentageSchema = z.string().regex(/^[0-9]+%$/);
+type Spercentage = z.infer<typeof SpercentageSchema>;
+
+const RGBaSchema = StringOrNumberSchema.array();
+type RGBa = z.infer<typeof RGBaSchema>;
+
+const parseRGB = (num: StringOrNumber) => {
   let n = num;
   if (typeof n !== 'number')
     n = n.endsWith('%') ? (parseFloat(n) * 255) / 100 : parseFloat(n);
   return clamp(Math.round(n), 0, 255);
 };
 
-const parsePercentage = (percentage: string) =>
+const parsePercentage = (percentage: Spercentage) =>
   clamp(parseFloat(percentage), 0, 100);
 
-const parseAlpha = (alpha: number | string) => {
+const parseAlpha = (alpha: StringOrNumber) => {
   let a = alpha;
   if (typeof a !== 'number')
     a = a.endsWith('%') ? parseFloat(a) / 100 : parseFloat(a);
   return clamp(a, 0, 1);
 };
-
-type RGBa = [
-  r: string | number,
-  g: string | number,
-  b: string | number,
-  a?: number,
-];
 
 const getRGB = ([r, g, b, a = 1]: RGBa) => {
   return {

@@ -1,20 +1,21 @@
-type Options = {
-  alpha?: number;
-};
+import { HEXSchema, HEX } from '../../types';
 
-const hex2rgb = (hex: string) => {
+const hex2rgb = (hex: HEX) => {
+  if (!HEXSchema.safeParse(hex).success) {
+    throw new TypeError(`Input should be a valid HEX color: ${hex}`);
+  }
+
   hex = hex.replace(/^#/, '');
 
-  const options: Options = {};
-  let alphaFromHex = 1;
+  let alpha = 1;
 
   if (hex.length === 8) {
-    alphaFromHex = Number.parseInt(hex.slice(6, 8), 16) / 255;
+    alpha = Number.parseInt(hex.slice(6, 8), 16) / 255;
     hex = hex.slice(0, 6);
   }
 
   if (hex.length === 4) {
-    alphaFromHex = Number.parseInt(hex.slice(3, 4).repeat(2), 16) / 255;
+    alpha = Number.parseInt(hex.slice(3, 4).repeat(2), 16) / 255;
     hex = hex.slice(0, 3);
   }
 
@@ -26,7 +27,7 @@ const hex2rgb = (hex: string) => {
   const r = number >> 16;
   const g = (number >> 8) & 255;
   const b = number & 255;
-  const a = typeof options.alpha === 'number' ? options.alpha : alphaFromHex;
+  const a = alpha;
 
   return [r, g, b, a];
 };
