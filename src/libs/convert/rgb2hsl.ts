@@ -1,4 +1,10 @@
-const rgb2hsl = (rgb: number[]) => {
+import { RGBSchema, RGB } from '../../types';
+
+const rgb2hsl = (rgb: RGB) => {
+  if (!RGBSchema.safeParse(rgb).success) {
+    throw new TypeError(`Input should be a valid RGB color: ${rgb}`);
+  }
+
   const r = rgb[0] / 255;
   const g = rgb[1] / 255;
   const b = rgb[2] / 255;

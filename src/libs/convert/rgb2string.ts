@@ -1,4 +1,10 @@
-const rgb2string = (rgb: number[]) => {
+import { RGBSchema, RGB } from '../../types';
+
+const rgb2string = (rgb: RGB) => {
+  if (!RGBSchema.safeParse(rgb).success) {
+    throw new TypeError(`Input should be a valid RGB color: ${rgb}`);
+  }
+
   let scheme = 'rgb';
 
   if (rgb.length === 4) {

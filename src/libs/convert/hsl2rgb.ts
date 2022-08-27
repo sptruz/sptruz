@@ -1,12 +1,18 @@
-const hsl2rgb = (hsl: number[]): number[] => {
+import { HSLSchema, HSL } from '../../types';
+
+const hsl2rgb = (hsl: HSL) => {
+  if (!HSLSchema.safeParse(hsl).success) {
+    throw new TypeError(`Input should be a valid HSL color: ${hsl}`);
+  }
+
   const h = hsl[0] / 360;
   const s = hsl[1] / 100;
   const l = hsl[2] / 100;
 
-  let tmp1: number;
-  let tmp2: number;
+  let tmp1;
+  let tmp2;
 
-  let val: number;
+  let val;
 
   if (s == 0) return [l * 255, l * 255, l * 255];
 

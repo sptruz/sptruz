@@ -12,27 +12,33 @@ import ColorsNames from '../../data/colors.data';
 import { getHEX, getHSL, getRGB } from '../../utils/getColor.util';
 import toLowerKeys from '../../utils/toLowerKeys.util';
 
-const parse = (str: string) => {
-  const hex = HEX_REGEX.exec(str);
+import { ParseColorSchema, ParseColor } from '../../types';
+
+const parse = (color: ParseColor) => {
+  if (!ParseColorSchema.safeParse(color).success) {
+    throw new TypeError(`Input should be a valid color: ${color}`);
+  }
+
+  const hex = HEX_REGEX.exec(color);
   if (hex) return getHEX(hex[0]);
 
-  const hsl = HSL4_REGEX.exec(str) || HSL3_REGEX.exec(str);
+  const hsl = HSL4_REGEX.exec(color) || HSL3_REGEX.exec(color);
   if (hsl) return getHSL([hsl[1], hsl[2], hsl[3]]);
 
   const rgb =
-    RGB3_NUMBER_REGEX.exec(str) ||
-    RGB3_PERCENTAGE_REGEX.exec(str) ||
-    RGB4_NUMBER_REGEX.exec(str) ||
-    RGB4_PERCENTAGE_REGEX.exec(str);
+    RGB3_NUMBER_REGEX.exec(color) ||
+    RGB3_PERCENTAGE_REGEX.exec(color) ||
+    RGB4_NUMBER_REGEX.exec(color) ||
+    RGB4_PERCENTAGE_REGEX.exec(color);
 
   if (rgb) return getRGB([rgb[1], rgb[2], rgb[3]]);
 
-  const transparent = TRANSPARENT_REGEX.exec(str);
+  const transparent = TRANSPARENT_REGEX.exec(color);
   if (transparent) return getRGB([0, 0, 0, 0]);
 
   const colorNameRGB = toLowerKeys(ColorsNames);
 
-  const colorByName = colorNameRGB[str.toLowerCase()].rgb;
+  const colorByName = colorNameRGB[color.toLowerCase()].rgb;
 
   if (colorByName)
     return getRGB([colorByName[0], colorByName[1], colorByName[2], 1]);

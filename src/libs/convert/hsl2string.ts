@@ -1,4 +1,10 @@
-const hsl2string = (hsl: number[]) => {
+import { HSLSchema, HSL } from '../../types';
+
+const hsl2string = (hsl: HSL) => {
+  if (!HSLSchema.safeParse(hsl).success) {
+    throw new TypeError(`Input should be a valid HSL color: ${hsl}`);
+  }
+
   if (hsl.length === 4) {
     const scheme = 'hsla';
     const _hsl4: [number, string, string, number] = [
