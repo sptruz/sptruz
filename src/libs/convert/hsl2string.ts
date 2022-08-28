@@ -1,7 +1,5 @@
-import { HSLSchema, HSL } from '../../types';
-
-const hsl2string = (hsl: HSL) => {
-  if (!HSLSchema.safeParse(hsl).success) {
+const hsl2string = (hsl: number[]) => {
+  if ((hsl.length !== 3 && hsl.length !== 4) || typeof hsl === 'string') {
     throw new TypeError(`Input should be a valid HSL color: ${hsl}`);
   }
 
