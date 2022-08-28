@@ -1,7 +1,5 @@
 import clamp from '../../utils/clamp.util';
 
-import { RGBSchema, RGB } from '../../types';
-
 const component2hex = (val: number) => {
   const value = Math.round(clamp(val, 0, 255));
   const hex = value.toString(16);
@@ -9,8 +7,8 @@ const component2hex = (val: number) => {
   return hex.length == 1 ? '0' + hex : hex;
 };
 
-const rgb2hex = (rgb: RGB) => {
-  if (!RGBSchema.safeParse(rgb).success) {
+const rgb2hex = (rgb: number[]) => {
+  if ((rgb.length !== 3 && rgb.length !== 4) || typeof rgb === 'string') {
     throw new TypeError(`Input should be a valid RGB color: ${rgb}`);
   }
 

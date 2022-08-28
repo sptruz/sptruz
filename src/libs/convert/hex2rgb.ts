@@ -1,7 +1,8 @@
-import { HEXSchema, HEX } from '../../types';
+import { _HEX_REGEX } from '../../constants/pattern.regex';
 
-const hex2rgb = (hex: HEX) => {
-  if (!HEXSchema.safeParse(hex).success) {
+const hex2rgb = (hex: string) => {
+  const hexMatch = _HEX_REGEX.exec(hex);
+  if (!hexMatch) {
     throw new TypeError(`Input should be a valid HEX color: ${hex}`);
   }
 

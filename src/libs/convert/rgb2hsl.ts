@@ -1,7 +1,5 @@
-import { RGBSchema, RGB } from '../../types';
-
-const rgb2hsl = (rgb: RGB) => {
-  if (!RGBSchema.safeParse(rgb).success) {
+const rgb2hsl = (rgb: number[]) => {
+  if ((rgb.length !== 3 && rgb.length !== 4) || typeof rgb === 'string') {
     throw new TypeError(`Input should be a valid RGB color: ${rgb}`);
   }
 
