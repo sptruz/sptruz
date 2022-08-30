@@ -1,29 +1,28 @@
+import Head from 'next/head';
 import type { NextPage } from 'next';
 
 import DeviconsReactOriginal from 'devicons-react/lib/icons/DeviconsReactOriginal';
 
 import Installation from '@/components/installation';
-import BasicUsage from '@/components/basicusage';
 
-const Home: NextPage = () => {
+const Page: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>Installation | Sptruz</title>
+      </Head>
       <header>
         <section className={'section-header'}>
           <DeviconsReactOriginal size={'3rem'} />
-          <h1>Sptruz</h1>
+          <h1>
+            Sptruz <span>Installation</span>
+          </h1>
         </section>
       </header>
 
-      <section>
-        <h2>Installation</h2>
-        <Installation />
-
-        <h2>Basic usage</h2>
-        <BasicUsage />
-      </section>
+      <Installation />
     </>
   );
 };
 
-export default Home;
+export default Page;
