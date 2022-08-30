@@ -10,29 +10,6 @@ $icon-bg-color: rgba(255, 255, 255, 0.05);
 $icon-size: 35px;
 
 @import '~react-pro-sidebar/dist/scss/styles.scss';
-html {
-  scroll-behavior: smooth;
-}
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-}
-a {
-  text-decoration: none;
-}
-::-webkit-scrollbar {
-  width: 0.6rem;
-  height: 0.6rem;
-  background-color: #071013;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #44575f;
-}
 
 body {
   margin: 0;
@@ -160,32 +137,6 @@ body {
     }
   }
 
-  &.rtl {
-    direction: rtl;
-    text-align: right;
-
-    header {
-      h1 {
-        transform: translateX(20px);
-      }
-    }
-    .block {
-      direction: rtl;
-      > span {
-        margin-left: 0;
-        margin-right: 10px;
-      }
-    }
-    .sidebar-btn-wrapper {
-      .sidebar-btn {
-        span {
-          margin-left: 0;
-          margin-right: 5px;
-        }
-      }
-    }
-  }
-
   @media (max-width: 767.98px) {
     overflow-x: hidden;
     header {
@@ -205,6 +156,35 @@ body {
       }
     }
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #071013;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #44575f;
 }
 
 .badge {
