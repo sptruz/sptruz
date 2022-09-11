@@ -1,6 +1,6 @@
-import convert from '../convert';
-import mix from '../mix';
-import parse from '../parse';
+import convert from 'https://deno.land/x/sptruz_convert@0.0.0-beta.0.0.1/mod.ts';
+import mix from 'https://deno.land/x/sptruz_mix@0.0.0-beta.0.0.0/mod.ts';
+import parse from 'https://deno.land/x/sptruz_parse@0.0.0-beta.0.0.0/mod.ts';
 
 class Sptruz {
   private rgb: number[];

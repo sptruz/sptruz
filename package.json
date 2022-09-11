@@ -1,25 +1,8 @@
 {
   "name": "sptruz",
-  "version": "0.0.0-beta.0.0.2",
-  "description": "Sptruz is an npm package for allows you to combine two colors in a variety of combinations and obtain CSS color tints and shades. In addition to processing a CSS color string and converting colors, computations also take into account opacity.",
-  "keywords": [
-    "color",
-    "color-name",
-    "convert",
-    "parse",
-    "mix",
-    "tint",
-    "tints",
-    "shade",
-    "shades",
-    "hex",
-    "hexa",
-    "hsl",
-    "hsla",
-    "rgb",
-    "rgba",
-    "alpha"
-  ],
+  "version": "0.0.0-beta.0.0.3",
+  "description": "",
+  "keywords": [],
   "license": "MIT",
   "author": {
     "name": "Mohammad Abu Mattar",
@@ -29,10 +12,10 @@
   "homepage": "https://sptruz.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MKAbuMattar/sptruz.git"
+    "url": "git+https://github.com/sptruz/sptruz.git"
   },
   "bugs": {
-    "url": "https://github.com/MKAbuMattar/sptruz/issues"
+    "url": "https://github.com/sptruz/sptruz/issues"
   },
   "scripts": {
     "lint:fix": "eslint --ignore-path .eslintignore --fix",
@@ -44,40 +27,41 @@
     "test:coverage": "jest --coverage",
     "test": "jest",
     "test:deno": "cd deno && deno test",
-    "clean:color-names": "rm -rf color-names",
     "clean:lib": "rm -rf lib",
     "clean:deno": "rm -rf deno",
     "clean": "yarn clean:lib && yarn clean:deno",
-    "script:config:clone": "yarn clean:color-names && node -r esbuild-runner/register script/config/gitclone.config.ts",
-    "script:csv-to-json": "node -r esbuild-runner/register script/utils/csvToJson.util.ts",
-    "script:get-base": "node -r esbuild-runner/register script/index.ts",
     "play:ts": "nodemon -e ts -w . -x esr src/playground/playground.ts",
     "build:lib": "tsc --p tsconfig.cjs.json && rollup --config rollup.config.js",
     "build:deno": "node -r esbuild-runner/register script/deno/build.lib.ts",
     "build": "yarn clean && yarn build:lib && yarn build:deno",
     "prepare": "husky install"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@sptruz/convert": "0.0.0-beta.0.0.1",
+    "@sptruz/mix": "0.0.0-beta.0.0.0",
+    "@sptruz/parse": "0.0.0-beta.0.0.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "17.1.2",
     "@commitlint/config-conventional": "17.1.0",
-    "@rollup/plugin-typescript": "8.4.0",
-    "@types/node": "18.7.13",
-    "@typescript-eslint/eslint-plugin": "5.35.1",
-    "@typescript-eslint/parser": "5.35.1",
-    "esbuild": "0.15.5",
+    "@rollup/plugin-typescript": "8.5.0",
+    "@sptruz/color-name": "0.0.0-beta.0.0.1",
+    "@types/node": "18.7.16",
+    "@typescript-eslint/eslint-plugin": "5.36.2",
+    "@typescript-eslint/parser": "5.36.2",
+    "esbuild": "0.15.7",
     "esbuild-runner": "2.2.1",
     "eslint": "8.23.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-simple-import-sort": "7.0.0",
+    "eslint-plugin-simple-import-sort": "8.0.0",
     "eslint-plugin-unused-imports": "2.0.0",
     "husky": "8.0.1",
-    "jest": "29.0.1",
+    "jest": "29.0.3",
     "prettier": "2.7.1",
-    "rollup": "2.78.1",
-    "ts-jest": "28.0.8",
-    "typescript": "4.8.2"
+    "rollup": "2.79.0",
+    "ts-jest": "29.0.0",
+    "typescript": "4.8.3"
   },
   "sideEffects": false,
   "exports": {

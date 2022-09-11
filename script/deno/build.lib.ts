@@ -54,7 +54,23 @@ const recursiveAndbuild = (
           /^(?:import|export)[\s\S]*?from\s*['"]([^'"]*)['"];$/gm,
           (line, target) => {
             if (target === '@jest/globals') {
-              return `import { expect } from "https://deno.land/x/expect@v0.2.6/mod.ts";\nconst test = Deno.test;`;
+              return `import { expect } from 'https://deno.land/x/expect@v0.2.6/mod.ts';\r\nconst test = Deno.test;`;
+            }
+
+            if (target === '@sptruz/color-name') {
+              return `import ColorName from 'https://deno.land/x/sptruz_color_name@0.0.0-beta.0.0.1/mod.ts';`;
+            }
+
+            if (target === '@sptruz/convert') {
+              return `import convert from 'https://deno.land/x/sptruz_convert@0.0.0-beta.0.0.1/mod.ts';`;
+            }
+
+            if (target === '@sptruz/parse') {
+              return `import parse from 'https://deno.land/x/sptruz_parse@0.0.0-beta.0.0.0/mod.ts';`;
+            }
+
+            if (target === '@sptruz/mix') {
+              return `import mix from 'https://deno.land/x/sptruz_mix@0.0.0-beta.0.0.0/mod.ts';`;
             }
 
             const targetNodePath = join(dirname(nodePath), target);
@@ -95,7 +111,12 @@ const recursiveAndbuild = (
     build(root);
   })();
 
-  writeFileSync(join(denoSrcRoot, 'mod.ts'), `export * from "./index.ts";\n`, {
+  const mod = `import Sptruz from './index.ts';
+export * from './index.ts';
+export default Sptruz;
+\r\n`;
+
+  writeFileSync(join(denoSrcRoot, 'mod.ts'), mod, {
     encoding: 'utf-8',
   });
 
