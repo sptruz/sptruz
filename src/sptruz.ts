@@ -1,6 +1,6 @@
-import convert from '../convert/index.ts';
-import mix from '../mix/index.ts';
-import parse from '../parse/index.ts';
+import convert from '@sptruz/convert';
+import mix from '@sptruz/mix';
+import parse from '@sptruz/parse';
 
 class Sptruz {
   private rgb: number[];
