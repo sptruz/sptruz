@@ -1,8 +1,8 @@
 import { expect } from 'https://deno.land/x/expect@v0.2.6/mod.ts';
 const test = Deno.test;
 
-import ColorName from 'https://deno.land/x/sptruz_color_name@0.0.0-beta.0.0.1/mod.ts';
-import convert from 'https://deno.land/x/sptruz_convert@0.0.0-beta.0.0.1/mod.ts';
+import ColorName from 'https://deno.land/x/sptruz_color_name@0.0.0-beta.0.1.0/mod.ts';
+import convert from 'https://deno.land/x/sptruz_convert@0.0.0-beta.0.1.0/mod.ts';
 
 import Sptruz from '../index.ts';
 
@@ -78,7 +78,7 @@ test('sptruz shade', async () => {
 });
 
 test('sptruz shades', async () => {
-  const color = new Sptruz(ColorName['CafAuLait'].hex);
+  const color = new Sptruz(ColorName['CaféAuLait'].hex);
 
   expect(color.shades()).toEqual([
     { rgb: [83, 62, 46], alpha: 1, type: 'shade', weight: 50 },

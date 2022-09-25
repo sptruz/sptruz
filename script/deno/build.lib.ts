@@ -58,19 +58,19 @@ const recursiveAndbuild = (
             }
 
             if (target === '@sptruz/color-name') {
-              return `import ColorName from 'https://deno.land/x/sptruz_color_name@0.0.0-beta.0.0.1/mod.ts';`;
+              return `import ColorName from 'https://deno.land/x/sptruz_color_name@0.0.0-beta.0.1.0/mod.ts';`;
             }
 
             if (target === '@sptruz/convert') {
-              return `import convert from 'https://deno.land/x/sptruz_convert@0.0.0-beta.0.0.1/mod.ts';`;
+              return `import convert from 'https://deno.land/x/sptruz_convert@0.0.0-beta.0.1.0/mod.ts';`;
             }
 
             if (target === '@sptruz/parse') {
-              return `import parse from 'https://deno.land/x/sptruz_parse@0.0.0-beta.0.0.0/mod.ts';`;
+              return `import parse from 'https://deno.land/x/sptruz_parse@0.0.0-beta.0.1.0/mod.ts';`;
             }
 
             if (target === '@sptruz/mix') {
-              return `import mix from 'https://deno.land/x/sptruz_mix@0.0.0-beta.0.0.0/mod.ts';`;
+              return `import mix from 'https://deno.land/x/sptruz_mix@0.0.0-beta.0.1.0/mod.ts';`;
             }
 
             const targetNodePath = join(dirname(nodePath), target);

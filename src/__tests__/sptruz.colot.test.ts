@@ -77,7 +77,7 @@ test('sptruz shade', async () => {
 });
 
 test('sptruz shades', async () => {
-  const color = new Sptruz(ColorName['CafAuLait'].hex);
+  const color = new Sptruz(ColorName['CaféAuLait'].hex);
 
   expect(color.shades()).toEqual([
     { rgb: [83, 62, 46], alpha: 1, type: 'shade', weight: 50 },
