@@ -201,7 +201,7 @@ import Sptruz from 'sptruz';
 `@return Sptruz`
 
 ### tints
-  
+
 `@param weight: number` tints weight (default: 50)
 
 `@return Sptruz[]`
